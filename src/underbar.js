@@ -101,6 +101,18 @@
 
   // Produce a duplicate-free version of the array.
   _.uniq = function(array) {
+    var results = [];
+    var uniques = {};
+
+    for (var i = 0; i < array.length; i++) {
+      uniques[array[i]] = array[i];
+    }
+
+    for (var key in uniques) {
+      results.push(uniques[key]);
+    }
+
+    return results;
   };
 
 
