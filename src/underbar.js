@@ -169,13 +169,14 @@
   _.reduce = function(collection, iterator, accumulator) {
     var initializeReduce;
 
-    if (arguments.length === 2){
+    if (arguments.length === 2) {
       initializeReduce = true;
     }
-    _.each(collection, function(element){
-      if (initializeReduce){
+    _.each(collection, function(element) {
+      if (initializeReduce) {
         accumulator = element;
         initializeReduce = false;
+        return accumulator;
       }
       accumulator = iterator(accumulator, element);
       return accumulator;
