@@ -204,7 +204,7 @@
       iterator = _.identity;
     }
     return _.reduce(collection, function(trueOrFalse, element) {
-      if(iterator(element) && trueOrFalse) {
+      if (iterator(element) && trueOrFalse) {
         return trueOrFalse = true;
       } else {
         return trueOrFalse = false;
@@ -216,6 +216,16 @@
   // provided, provide a default one
   _.some = function(collection, iterator) {
     // TIP: There's a very clever way to re-use every() here.
+    if (arguments.length === 1) {
+      iterator = _.identity;
+    }
+    var result = false;
+    _.every(collection, function(element) {
+      if (iterator(element)) {
+        result = true;
+      }
+    });
+    return result;
   };
 
 
